@@ -1,0 +1,10 @@
+# Charte graphique : à déposer sur Google Drive, jamais sur GitHub ni en ligne
+charte-ia-top/
+
+# Fichiers système et éditeur
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.tmp
+*.log
