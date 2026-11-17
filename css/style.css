@@ -253,7 +253,7 @@ main:focus { outline: none; }
 
 .header-inner { display: flex; align-items: center; gap: 1rem; height: 100%; }
 .brand { display: block; flex: none; margin-right: auto; padding: 6px 0; }
-.brand img { width: auto; height: 30px; }
+.brand img { width: auto; height: 36px; }
 
 .header-cta { display: none; min-height: 42px; padding: 0.55rem 1rem; font-size: 0.875rem; }
 
@@ -524,7 +524,7 @@ main:focus { outline: none; }
 .apport-grid { display: grid; gap: 3rem; }
 .photo-close {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1; /* carré sur mobile : tout le visage reste visible */
   overflow: hidden;
   background: var(--lin);
 }
@@ -542,7 +542,7 @@ main:focus { outline: none; }
   letter-spacing: -0.04em;
   color: var(--encre);
 }
-.photo-close .portrait-img { object-position: 50% 42%; }
+.photo-close .portrait-img { object-position: 50% 50%; } /* photo recadrée sur le visage */
 .apport-text .h-xl { margin-bottom: clamp(3rem, 7vw, 4.5rem); }
 .pillars { display: grid; }
 .pillar {
@@ -873,7 +873,6 @@ main:focus { outline: none; }
   padding-top: 1.5rem;
   border-top: 1px solid rgba(243, 238, 229, 0.25);
 }
-.footer-motto { font-family: var(--serif); font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.02em; }
 .footer-links { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.9375rem; color: var(--grege); }
 .footer-links a { display: inline-block; padding: 0.3rem 0; color: var(--papier); text-decoration-color: rgba(243, 238, 229, 0.35); }
 .footer-links a:hover { text-decoration-color: var(--vermillon); }
@@ -913,6 +912,10 @@ main:focus { outline: none; }
 .legal-content a:hover { text-decoration-color: var(--vermillon); }
 
 /* 9. MISE EN PAGE TABLETTE ET ORDINATEUR ----------------------------------- */
+@media (max-width: 359px) {
+  .brand img { height: 30px; }
+}
+
 @media (min-width: 560px) {
   .header-cta { display: inline-flex; }
   .nav-cta { display: none; }
@@ -920,7 +923,7 @@ main:focus { outline: none; }
 
 @media (min-width: 768px) {
   :root { --gutter: 32px; --header-h: 72px; }
-  .brand img { height: 32px; }
+  .brand img { height: 38px; }
   .hero-top-mid { display: inline; }
 
   .hero-foot { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: end; gap: 2.5rem; }
@@ -955,8 +958,7 @@ main:focus { outline: none; }
 
   .case-steps { grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; }
 
-  .footer-bottom { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
-  .footer-links { flex-direction: row; flex-wrap: wrap; gap: 0.25rem 1.75rem; justify-content: flex-end; }
+  .footer-links { flex-direction: row; flex-wrap: wrap; gap: 0.25rem 1.75rem; }
 }
 
 @media (min-width: 1024px) {
@@ -982,6 +984,7 @@ main:focus { outline: none; }
     font-size: 0.9375rem;
     font-weight: 500;
     letter-spacing: 0;
+    white-space: nowrap;
   }
   .nav-list a:hover { text-decoration: underline; text-decoration-color: var(--vermillon); text-decoration-thickness: 2px; }
   .nav-num { font-size: 0.625rem; line-height: 1.2; }
@@ -1045,6 +1048,13 @@ main:focus { outline: none; }
   .cal-box { min-height: 650px; padding: 2rem 1.5rem 0.75rem; }
   .cal-head { margin: 0 0.75rem 0.75rem; }
   .cal-embed { min-height: 560px; }
+}
+
+/* Écrans 1024-1239 px : menu resserré pour laisser la place au logo avec baseline */
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .nav-list { gap: 0; }
+  .nav-list a { padding-inline: 0.5rem; font-size: 0.875rem; }
+  .header-cta { padding-inline: 0.85rem; }
 }
 
 @media (min-width: 1440px) {
@@ -1215,7 +1225,7 @@ main:focus { outline: none; }
 .portrait { animation: curtain 1.4s cubic-bezier(0.65, 0, 0.2, 1) 0.15s both; }
 .portrait-img { scale: 1.08; translate: 0 var(--py, 0px); }
 .hero .portrait-img { animation: settle 2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both; }
-.photo-close .portrait-img { scale: 1.14; }
+.photo-close .portrait-img { scale: 1.08; }
 
 /* Boutons : balayage vermillon au survol */
 .btn-ink { position: relative; overflow: hidden; isolation: isolate; }

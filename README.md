@@ -15,7 +15,7 @@ ce qui est dans ce dossier est exactement ce qui est mis en ligne.
 | `404.html` | La page affichée quand une adresse n'existe pas |
 | `css/style.css` | Les couleurs, les polices et la mise en page |
 | `js/main.js` | Les petites animations, le menu mobile et le calendrier cal.com |
-| `assets/img/` | Logo, favicon, image de partage, photo |
+| `assets/img/` | Logos (avec et sans baseline), favicon, image de partage, photos |
 | `assets/fonts/` | Les polices Newsreader et Schibsted Grotesk (licence libre OFL) |
 | `favicon.ico`, `robots.txt`, `sitemap.xml`, `.htaccess` | Fichiers techniques (référencement, serveur) |
 | `charte-ia-top/` | La charte graphique. **Ce dossier n'est pas envoyé sur GitHub ni mis en ligne** (il est listé dans `.gitignore`). |
@@ -50,6 +50,10 @@ Elle existe en deux versions, dans le dossier **`assets/img/`** :
 |---|---|---|
 | `photo-jp.jpg` | En haut de page | Portrait 4:5, 960 × 1200 px |
 | `photo-jp-gros-plan.jpg` | Section « Ce que j'apporte » | Gros plan 4:5, 800 × 1000 px |
+
+Les deux fichiers sont recadrés sur le visage à partir de l'original HD (`charte-ia-top/_sources/photo-jp-source.jpg`,
+2560 × 1707 px) par le script `charte-ia-top/_sources/recadrer_photos.py` (`pip install pillow`, puis
+`python charte-ia-top/_sources/recadrer_photos.py`). Sur mobile, le gros plan s'affiche en carré : tout le visage reste visible.
 
 Pour la remplacer : préparez une photo au même format (portrait 4:5), en JPG de moins de 300 Ko si possible
 (le site [squoosh.app](https://squoosh.app) permet de l'alléger gratuitement), donnez-lui **exactement le même nom**
@@ -154,7 +158,7 @@ Les licences (OFL) sont jointes dans le même dossier.
 Le dossier contient :
 
 - `charte-ia-top.pdf` : la charte graphique complète (A4) ;
-- `logos/svg/` : les 6 logos en vectoriel ;
+- `logos/svg/` : les 10 logos en vectoriel (dont 4 avec la baseline « De l'Idée à l'Action. », empilés ou horizontaux) ;
 - `logos/png/` : chaque logo en PNG à fond transparent, en 512, 1024 et 2048 px de large, et les favicons en 32, 180 et 512 px ;
 - `polices/` : Newsreader et Schibsted Grotesk à installer sur un ordinateur (Word, PowerPoint, Canva…) ;
 - `_sources/` : les fichiers qui ont servi à fabriquer le PDF et les images.
@@ -175,7 +179,8 @@ Il ne part pas sur GitHub : c'est voulu.
   python -m playwright install chromium
   python charte-ia-top/_sources/generer.py
   ```
-  Le script redessine aussi les logos (`assets/img/logo.svg`, `logo-clair.svg`, `favicon.svg`, `monogramme.svg`),
+  Le script redessine aussi les logos (`assets/img/logo.svg`, `logo-clair.svg`, `logo-baseline.svg` pour l'en-tête,
+  `logo-baseline-clair.svg` pour le pied de page, `favicon.svg`, `monogramme.svg`),
   et régénère `assets/img/og-image.png`, `assets/img/apple-touch-icon.png` et `favicon.ico`.
 
 ---
